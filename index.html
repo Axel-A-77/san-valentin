@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Valentín 💗</title>
+
+<style>
+:root{
+--pink1:#ff2f6d;
+--pink2:#ff86b8;
+--bg1:#ff5aa5;
+--bg2:#ffd1e6;
+}
+
+body{
+margin:0;
+font-family:system-ui;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(135deg,var(--bg1),var(--bg2));
+overflow:hidden;
+}
+
+.container{
+width:90%;
+max-width:500px;
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:25px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,0.2);
+}
+
+h1{
+margin:0 0 10px 0;
+color:white;
+text-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.message{
+background:white;
+padding:20px;
+border-radius:15px;
+min-height:80px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+color:#9b1f54;
+transition:0.3s;
+}
+
+.heart{
+margin-top:20px;
+font-size:60px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.heart:hover{
+transform:scale(1.1);
+}
+
+button{
+margin:10px;
+padding:12px 18px;
+border:none;
+border-radius:30px;
+font-weight:700;
+cursor:pointer;
+}
+
+.primary{
+background:linear-gradient(135deg,var(--pink1),var(--pink2));
+color:white;
+}
+
+.secondary{
+background:#eee;
+}
+
+.hidden{
+display:none;
+}
+
+iframe{
+margin-top:15px;
+border-radius:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>San Valentín 💗</h1>
+<p>Para: <strong id="nombre"></strong></p>
+
+<div class="message" id="message"></div>
+
+<div class="heart" id="heart">❤️</div>
+
+<div id="buttons" class="hidden">
+<button class="primary" onclick="respuestaSi()">Sí 💍</button>
+<button class="secondary" id="noBtn">No 😅</button>
+</div>
+
+<iframe style="height:152px;width:100%;"
+src="https://open.spotify.com/embed/track/1qBdJHxR2qY0dFad0ZI8sj"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+</div>
+
+<script>
+
+const nombreNovia = "Sheyla Jennifer";
+document.getElementById("nombre").textContent = nombreNovia;
+
+const mensajes = [
+"Eres el regalo que nunca esperaba, pero que siempre necesité.",
+"Eres como ese pedazo clave que hacía falta en mi rompecabezas. Contigo todo es más bonito y divertido.",
+"Eres el sol que hace florecer mis días grises.",
+"Nuestros momentos juntos son estrellas en el cielo de mi vida.",
+"Eres la persona con la que quiero compartir cada café, cada risa y hasta los días más aburridos.",
+"Gracias por aguantarme… y aun así quererme.",
+"Gracias por ser mi brújula incluso cuando el día a día nos distrae.",
+"Cuanto más tiempo paso contigo, más te amo.",
+"Siempre descubro algo nuevo en ti que confirma que eres la persona indicada.",
+"Cada segundo a tu lado es un regalo.",
+"Eres muy especial para mí.",
+"Feliz San Valentín. Te amo.",
+"¿Quieres seguir este camino conmigo?"
+];
+
+let index = 0;
+const messageBox = document.getElementById("message");
+messageBox.textContent = mensajes[0];
+
+document.getElementById("heart").addEventListener("click",()=>{
+index++;
+if(index < mensajes.length){
+messageBox.textContent = mensajes[index];
+}
+if(index === mensajes.length-1){
+document.getElementById("buttons").classList.remove("hidden");
+}
+});
+
+function respuestaSi(){
+messageBox.textContent = "Sabía que dirías que sí 💖";
+document.getElementById("buttons").classList.add("hidden");
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*300+"px";
+noBtn.style.top=Math.random()*300+"px";
+});
+
+</script>
+
+</body>
+</html>
